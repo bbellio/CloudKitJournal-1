@@ -53,4 +53,10 @@ extension CKRecord {
     }
 }
 
+extension Entry: Equatable {
+    static func == (lhs: Entry, rhs: Entry) -> Bool {
+        if lhs.title == rhs.title && lhs.bodyText == rhs.bodyText && lhs.ckRecord == rhs.ckRecord { return true }
+        return false
+    }
+}
 

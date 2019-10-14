@@ -50,6 +50,19 @@ class EntryListTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let entry = EntryController.sharedInstance.entries[indexPath.row]
+            EntryController.sharedInstance.delete(entry: entry) { (success) in
+                if success {
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                } else {
+                    print("Could not delete entry")
+                }
+            }
+        }
+    }
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetailVC" {
