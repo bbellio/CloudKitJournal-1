@@ -9,19 +9,20 @@
 /* Begin PBXBuildFile section */
 		FCBE12C5235507D300781B10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE12C4235507D300781B10 /* AppDelegate.swift */; };
 		FCBE12C7235507D300781B10 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE12C6235507D300781B10 /* SceneDelegate.swift */; };
-		FCBE12C9235507D300781B10 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE12C8235507D300781B10 /* ViewController.swift */; };
 		FCBE12CC235507D300781B10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCBE12CA235507D300781B10 /* Main.storyboard */; };
 		FCBE12CE235507D400781B10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCBE12CD235507D400781B10 /* Assets.xcassets */; };
 		FCBE12D1235507D500781B10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCBE12CF235507D500781B10 /* LaunchScreen.storyboard */; };
 		FCBE12DF2355089900781B10 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE12DE2355089900781B10 /* Entry.swift */; };
 		FCBE12E223550FED00781B10 /* EntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE12E123550FED00781B10 /* EntryController.swift */; };
+		FCBE12E52355160A00781B10 /* EntryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE12E42355160A00781B10 /* EntryListTableViewController.swift */; };
+		FCBE12E72355167A00781B10 /* EntryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE12E62355167A00781B10 /* EntryDetailViewController.swift */; };
+		FCBE12EA23551BA000781B10 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE12E923551BA000781B10 /* DateFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FCBE12C1235507D300781B10 /* JournalCloudKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JournalCloudKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCBE12C4235507D300781B10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCBE12C6235507D300781B10 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FCBE12C8235507D300781B10 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FCBE12CB235507D300781B10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FCBE12CD235507D400781B10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FCBE12D0235507D500781B10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -29,6 +30,9 @@
 		FCBE12D8235507F900781B10 /* JournalCloudKit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JournalCloudKit.entitlements; sourceTree = "<group>"; };
 		FCBE12DE2355089900781B10 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		FCBE12E123550FED00781B10 /* EntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryController.swift; sourceTree = "<group>"; };
+		FCBE12E42355160A00781B10 /* EntryListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListTableViewController.swift; sourceTree = "<group>"; };
+		FCBE12E62355167A00781B10 /* EntryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailViewController.swift; sourceTree = "<group>"; };
+		FCBE12E923551BA000781B10 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,12 +65,12 @@
 		FCBE12C3235507D300781B10 /* JournalCloudKit */ = {
 			isa = PBXGroup;
 			children = (
+				FCBE12E823551B6900781B10 /* Helper Files */,
 				FCBE12DA2355086700781B10 /* Models */,
 				FCBE12DB2355086A00781B10 /* Controllers */,
 				FCBE12DC2355086E00781B10 /* Views */,
 				FCBE12D9235507FD00781B10 /* Supporting Files */,
 				FCBE12D8235507F900781B10 /* JournalCloudKit.entitlements */,
-				FCBE12C8235507D300781B10 /* ViewController.swift */,
 			);
 			path = JournalCloudKit;
 			sourceTree = "<group>";
@@ -95,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				FCBE12E023550FE000781B10 /* Model Controllers */,
+				FCBE12E3235515EE00781B10 /* View Controllers */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -121,6 +126,23 @@
 				FCBE12E123550FED00781B10 /* EntryController.swift */,
 			);
 			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		FCBE12E3235515EE00781B10 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FCBE12E42355160A00781B10 /* EntryListTableViewController.swift */,
+				FCBE12E62355167A00781B10 /* EntryDetailViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		FCBE12E823551B6900781B10 /* Helper Files */ = {
+			isa = PBXGroup;
+			children = (
+				FCBE12E923551BA000781B10 /* DateFormatter.swift */,
+			);
+			path = "Helper Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,9 +217,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCBE12DF2355089900781B10 /* Entry.swift in Sources */,
-				FCBE12C9235507D300781B10 /* ViewController.swift in Sources */,
+				FCBE12E52355160A00781B10 /* EntryListTableViewController.swift in Sources */,
 				FCBE12E223550FED00781B10 /* EntryController.swift in Sources */,
+				FCBE12EA23551BA000781B10 /* DateFormatter.swift in Sources */,
 				FCBE12C5235507D300781B10 /* AppDelegate.swift in Sources */,
+				FCBE12E72355167A00781B10 /* EntryDetailViewController.swift in Sources */,
 				FCBE12C7235507D300781B10 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,7 +368,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = JournalCloudKit/JournalCloudKit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = JournalCloudKit/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/JournalCloudKit/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -362,7 +386,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = JournalCloudKit/JournalCloudKit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = JournalCloudKit/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/JournalCloudKit/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

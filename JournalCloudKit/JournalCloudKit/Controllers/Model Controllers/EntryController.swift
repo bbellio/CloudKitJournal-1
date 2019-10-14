@@ -26,8 +26,8 @@ class EntryController {
             }
         }
     } // End of function
-    
-    func readEntries(completion: @escaping (_ success: Bool) -> Void) {
+    // Read
+    func fetchEntries(completion: @escaping (_ success: Bool) -> Void) {
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: EntryConstants.recordTypeKey, predicate: predicate)
         privateCloudDatabase.perform(query, inZoneWith: nil) { (records, error) in
