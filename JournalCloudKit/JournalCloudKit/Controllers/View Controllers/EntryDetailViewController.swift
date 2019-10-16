@@ -38,25 +38,10 @@ class EntryDetailViewController: UIViewController {
             let bodyText = bodyTextView.text,
             !title.isEmpty, !bodyText.isEmpty else { return }
         if let entry = entry {
-            EntryController.sharedInstance.update(entry: entry) { (success) in
-                if success {
-                    entry.title = title ; entry.bodyText = bodyText ; entry.timestamp = Date()
-                    EntryController.sharedInstance.save(entry: entry) { (success) in
-                        print("Saved newly updated entry")
-                    }
-                    self.returnToListView()
-                    print("Entry was successfully updated")
-                }
-            }
+            entry.title = title ; entry.bodyText = bodyText
+            self.updateEntry(entry: entry, title: title, bodyText: bodyText)
         } else {
-            EntryController.sharedInstance.createEntry(with: title, bodyText: bodyText) { (success) in
-                if success {
-                    self.returnToListView()
-                    print("Entry succesfully added")
-                } else {
-                    print("New entry was not saved")
-                }
-            }
+            self.addEntry(title: title, bodyText: bodyText)
         }
     } // End of function
     
@@ -82,6 +67,26 @@ class EntryDetailViewController: UIViewController {
     func returnToListView() {
         DispatchQueue.main.async {
             self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    func updateEntry(entry: Entry, title: String, bodyText: String) {
+        EntryController.sharedInstance.update(entry: entry) { (success) in
+            if success {
+                DispatchQueue.main.async {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+        }
+    }
+    
+    func addEntry(title: String, bodyText: String) {
+        EntryController.sharedInstance.createEntry(with: title, bodyText: bodyText) { (success) in
+            if success {
+                DispatchQueue.main.async {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
         }
     }
 } // End of class

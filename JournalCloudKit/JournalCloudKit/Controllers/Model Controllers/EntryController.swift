@@ -50,7 +50,7 @@ class EntryController {
         }
         privateCloudDatabase.add(operation)
     }
-    
+
     // Delete
     func delete(entry: Entry, completion: @escaping (_ success: Bool) -> Void) {
         let operation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [entry.ckRecord])
