@@ -21,6 +21,7 @@ class EntryListTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
+    
     // MARK: - Custom Functions
     func loadEntryData() {
         EntryController.sharedInstance.fetchEntries { (success) in
@@ -31,8 +32,8 @@ class EntryListTableViewController: UITableViewController {
     }
     
     func updateViews() {
-        self.tableView.tableFooterView = UIView()
         DispatchQueue.main.async {
+            self.tableView.tableFooterView = UIView()
             self.tableView.reloadData()
         }
     }
@@ -41,7 +42,7 @@ class EntryListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return EntryController.sharedInstance.entries.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "entryCell", for: indexPath)
         let entry = EntryController.sharedInstance.entries[indexPath.row]
@@ -55,7 +56,10 @@ class EntryListTableViewController: UITableViewController {
             let entry = EntryController.sharedInstance.entries[indexPath.row]
             EntryController.sharedInstance.delete(entry: entry) { (success) in
                 if success {
-                    tableView.deleteRows(at: [indexPath], with: .fade)
+                    EntryController.sharedInstance.entries.remove(at: indexPath.row)
+                    DispatchQueue.main.async {
+                        tableView.deleteRows(at: [indexPath], with: .fade)
+                    }
                 } else {
                     print("Could not delete entry")
                 }

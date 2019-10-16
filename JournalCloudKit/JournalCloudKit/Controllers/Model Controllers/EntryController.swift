@@ -28,25 +28,48 @@ class EntryController {
         }
     } // End of function
     
-    // Update
-    func update(entry: Entry, title: String, bodyText: String, timestamp: Date) {
-        
-    }
-    
-    // Delete
-    func delete(entry: Entry, completion: @escaping (_ success: Bool) -> Void) {
-        privateCloudDatabase.delete(withRecordID: entry.ckRecord) { (_, error) in
+    // Update in the Cloud
+    func update(entry: Entry, completion: @escaping (_ success: Bool) -> Void) {
+        let recordToUpdate = CKRecord(entry: entry)
+        let operation = CKModifyRecordsOperation(recordsToSave: [recordToUpdate], recordIDsToDelete: nil)
+        operation.savePolicy = .changedKeys
+        operation.qualityOfService = .userInteractive
+        operation.modifyRecordsCompletionBlock = {records, _, error in
             if let error = error {
                 print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
                 completion(false)
                 return
             }
-//            guard let recordID = recordID else { completion(false) ; return }
-//
-//            let deletedEntry = Entry(title: entry.title, bodyText: entry.bodyText, timestamp: entry.timestamp, ckRecord: recordID)
-//            guard let entryIndex = self.entries.firstIndex(of: deletedEntry) else { return }
-//            self.entries.remove(at: entryIndex)
+            guard recordToUpdate == records?.first else {
+                print("Unexpected record was updated")
+                completion(false)
+                return
+            }
+            print("Updated \(recordToUpdate.recordID) successfully")
+            completion(true)
         }
+        privateCloudDatabase.add(operation)
+    }
+    
+    // Delete
+    func delete(entry: Entry, completion: @escaping (_ success: Bool) -> Void) {
+        let operation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [entry.ckRecord])
+        operation.qualityOfService = .userInitiated
+        operation.modifyRecordsCompletionBlock = {_, recordIDs, error in
+            if let error = error {
+                print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
+                completion(false)
+                return
+            }
+            guard entry.ckRecord == recordIDs?.first else {
+                print("Unexpected recordID deleted")
+                completion(false)
+                return
+            }
+            print("Successfully deleted Entry from CloudKit")
+            completion(true)
+        }
+        privateCloudDatabase.add(operation)
     }
     
  // MARK: - Save and Fetch
@@ -68,8 +91,7 @@ class EntryController {
     } // End of function
 
     func save(entry: Entry, completion: @escaping (_ success: Bool) -> Void) {
-        let newEntry = Entry(title: entry.title, bodyText: entry.bodyText)
-        let entryRecord = CKRecord(entry: newEntry)
+        let entryRecord = CKRecord(entry: entry)
         privateCloudDatabase.save(entryRecord) { (record, error) in
             if let error = error {
                 print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")

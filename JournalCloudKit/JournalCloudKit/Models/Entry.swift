@@ -20,9 +20,9 @@ struct EntryConstants {
 // MARK: - Class Declaration
 
 class Entry {
-    let title: String
-    let bodyText: String
-    let timestamp: Date
+    var title: String
+    var bodyText: String
+    var timestamp: Date
     let ckRecord: CKRecord.ID
     
     init(title: String, bodyText: String, timestamp: Date = Date(), ckRecord: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString)) {

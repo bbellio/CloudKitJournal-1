@@ -17,6 +17,7 @@
 		FCBE12E52355160A00781B10 /* EntryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE12E42355160A00781B10 /* EntryListTableViewController.swift */; };
 		FCBE12E72355167A00781B10 /* EntryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE12E62355167A00781B10 /* EntryDetailViewController.swift */; };
 		FCBE12EA23551BA000781B10 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE12E923551BA000781B10 /* DateFormatter.swift */; };
+		FCBE12F1235644C800781B10 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCBE12F0235644C800781B10 /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		FCBE12E42355160A00781B10 /* EntryListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListTableViewController.swift; sourceTree = "<group>"; };
 		FCBE12E62355167A00781B10 /* EntryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailViewController.swift; sourceTree = "<group>"; };
 		FCBE12E923551BA000781B10 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		FCBE12F0235644C800781B10 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCBE12F1235644C800781B10 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +54,7 @@
 			children = (
 				FCBE12C3235507D300781B10 /* JournalCloudKit */,
 				FCBE12C2235507D300781B10 /* Products */,
+				FCBE12EF235644C800781B10 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -143,6 +147,14 @@
 				FCBE12E923551BA000781B10 /* DateFormatter.swift */,
 			);
 			path = "Helper Files";
+			sourceTree = "<group>";
+		};
+		FCBE12EF235644C800781B10 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FCBE12F0235644C800781B10 /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,12 +380,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = JournalCloudKit/JournalCloudKit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D3HMKK2YAV;
 				INFOPLIST_FILE = "$(SRCROOT)/JournalCloudKit/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.JournalCloudKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.JournalCloudKit1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -386,12 +399,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = JournalCloudKit/JournalCloudKit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D3HMKK2YAV;
 				INFOPLIST_FILE = "$(SRCROOT)/JournalCloudKit/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.JournalCloudKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.JournalCloudKit1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

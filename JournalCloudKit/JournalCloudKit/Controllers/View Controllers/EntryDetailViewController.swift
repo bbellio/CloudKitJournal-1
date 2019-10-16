@@ -9,7 +9,7 @@
 import UIKit
 
 class EntryDetailViewController: UIViewController {
-// MARK: - Global variables
+    // MARK: - Global variables
     var entry: Entry? {
         didSet {
             loadViewIfNeeded()
@@ -17,16 +17,17 @@ class EntryDetailViewController: UIViewController {
         }
     }
     
-// MARK: - Outlets
+    // MARK: - Outlets
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var bodyTextView: UITextView!
     
-// MARK: - Life Cycle
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateDesign()
     }
     
-// MARK: - Actions
+    // MARK: - Actions
     @IBAction func clearButtonTapped(_ sender: Any) {
         titleTextField.text = ""
         bodyTextView.text = ""
@@ -36,17 +37,27 @@ class EntryDetailViewController: UIViewController {
         guard let title = titleTextField.text,
             let bodyText = bodyTextView.text,
             !title.isEmpty, !bodyText.isEmpty else { return }
-//        if let entry = entry {
-//
-//        } else {
+        if let entry = entry {
+            EntryController.sharedInstance.update(entry: entry) { (success) in
+                if success {
+                    entry.title = title ; entry.bodyText = bodyText ; entry.timestamp = Date()
+                    EntryController.sharedInstance.save(entry: entry) { (success) in
+                        print("Saved newly updated entry")
+                    }
+                    self.returnToListView()
+                    print("Entry was successfully updated")
+                }
+            }
+        } else {
             EntryController.sharedInstance.createEntry(with: title, bodyText: bodyText) { (success) in
                 if success {
+                    self.returnToListView()
                     print("Entry succesfully added")
-                    self.navigationController?.popViewController(animated: true)
                 } else {
                     print("New entry was not saved")
                 }
             }
+        }
     } // End of function
     
     @IBAction func mainViewTapped(_ sender: Any) {
@@ -54,7 +65,7 @@ class EntryDetailViewController: UIViewController {
         titleTextField.resignFirstResponder()
     }
     
-// MARK: - Custom Functions
+    // MARK: - Custom Functions
     func updateDesign() {
         bodyTextView.layer.borderColor = UIColor.blue.cgColor
         bodyTextView.layer.borderWidth = 1
@@ -65,6 +76,12 @@ class EntryDetailViewController: UIViewController {
         if let entry = entry {
             titleTextField.text = entry.title
             bodyTextView.text = entry.bodyText
+        }
+    }
+    
+    func returnToListView() {
+        DispatchQueue.main.async {
+            self.navigationController?.popViewController(animated: true)
         }
     }
 } // End of class
